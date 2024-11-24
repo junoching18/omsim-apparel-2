@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omsim Apparel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+/* Styling code remains the same as your original */
+body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #007f89;
+            color: #fff;
+            padding: 1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+        .nav-container {
+            display: flex;
+            flex: 1;
+            justify-content: flex-start;
+        }
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #005f66;
+        }
+        header h1 {
+            margin: 0;
+            font-weight: 600;
+            font-size: 1.5em;
+            letter-spacing: 1px;
+            text-align: center;
+            flex: 2;
+        }
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .search-bar input {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .search-bar button {
+            background-color: #007f89;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .search-bar button:hover {
+            background-color: #005f66;
+        }
+        .contact-btn {
+            background-color: #ffdd57;
+            padding: 12px 20px;
+            color: #333;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .contact-btn:hover {
+            background-color: #ffbb33;
+        }
+        .featured {
+            background-color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 5px solid #007f89;
+        }
+        .featured img {
+            max-width: 150px;
+            border-radius: 50%;
+        }
+        .featured h2 {
+            margin: 20px 0 10px;
+            font-size: 2em;
+            color: #333;
+        }
+        .featured p {
+            font-size: 1.2em;
+            margin: 10px 0 20px;
+            color: #555;
+        }
+        .featured a {
+            display: inline-block;
+            background-color: #007f89;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        .featured a:hover {
+            background-color: #005f66;
+        }
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1521335629791-ce4aec67dd1f?fit=crop&w=1200&q=80') center/cover no-repeat;
+            color: #fff;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            border-bottom: 5px solid #ffdd57;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            margin: 20px;
+        }
+        .hero h2 {
+            font-size: 3.5em;
+            margin: 0.5em 0;
+            text-shadow: 2px 2px 4px #000;
+        }
+        .hero p {
+            font-size: 1.5em;
+            font-weight: 300;
+            text-shadow: 2px 2px 4px #000;
+            margin: 0.5em 0;
+        }
+        .shop-now {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #ffdd57, #ffbb33);
+            padding: 12px 24px;
+            text-decoration: none;
+            color: #333;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .shop-now:hover {
+            transform: translateY(-3px);
+        }
+        .container {
+            padding: 40px 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .product:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        .product img {
+            max-width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .product:hover img {
+            transform: scale(1.1);
+        }
+        .product h3 {
+            font-size: 1.3em;
+            margin: 12px 0;
+            color: #333;
+            font-weight: 500;
+        }
+        .product-info {
+            display: none;
+            text-align: left;
+        }
+        footer {
+            background-color: #007f89;
+            color: #fff;
+            text-align: center;
+            padding: 2em 1em;
+            margin-top: 20px;
+            font-weight: 300;
+        }
+        .footer-socials {
+            margin-top: 20px;
+        }
+        .footer-socials a {
+            color: #fff;
+            font-size: 2em;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+        .footer-socials a:hover {
+            color: #ffdd57;
+        }
+        #cart-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        #cart-container h2 {
+            font-size: 2em;
+            color: #007f89;
+            margin-bottom: 20px;
+        }
+        #cart-container ul {
+            list-style: none;
+            padding: 0;
+        }
+        #cart-container li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        #cart-container li button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #cart-container li button:hover {
+            background-color: #c0392b;
+        }
+        #cart-container .total {
+            font-size: 1.5em;
+            font-weight: 600;
+            text-align: right;
+            margin-top: 20px;
+            color: #007f89;
+        }
+        #cart-container .checkout-btn {
+            background-color: #28a745;
+            color: #fff;
+            padding: 12px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        #cart-container .checkout-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <nav>
+                <a href="javascript:void(0)" onclick="scrollToHome()">Home</a>
+                <a href="javascript:void(0)" onclick="showCategory('tshirts')">T-shirts</a>
+                <a href="javascript:void(0)" onclick="showCategory('shorts')">Shorts</a>
+                <a href="javascript:void(0)" onclick="showCategory('pants')">Pants</a>
+            </nav>
+        </div>
+        <h1>Omsim Apparel</h1>
+        <div class="header-actions">
+            <div class="search-bar">
+                <input type="text" id="search-bar" placeholder="Search for a product..." oninput="searchProducts()">
+                <button onclick="searchProducts()">Search</button>
+            </div>
+            <button class="contact-btn" onclick="window.location.href='mailto:contact@omsimapparel.com'">Contact Us</button>
+            <button class="contact-btn" onclick="logout()">Logout</button>
+        </div>
+    </header>
+    
+    <div class="hero">
+        <h2>Welcome to Omsim Apparel</h2>
+        <p>Your perfect fit is just a click away</p>
+        <a href="#shop-now" class="shop-now">Shop Now</a>
+    </div>
+    
+    <div class="featured">
+        <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462579258_2003794473472580_365862555818349845_n.jpg?stp=dst-jpg_s480x480&_nc_cat=104&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeHVPzRDLXxYY_-ovwz3TFD_1SNAxgm1D1jVI0DGCbUPWKgXKntkhWSCdHnrUod1B6WO20InZEHjafRpo8Mq0rD5&_nc_ohc=GZkA1Qe-tlIQ7kNvgFUyK62&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QEIh5Mqzfp4BOS2cNVhk99XVLgI3Vc2FmJu7bqcmqkvcw&oe=6762B935" alt="Featured Product">
+        <h2>Omsim</h2>
+        <p>Check out our new arrivals for this season</p>
+        <a href="#">Shop Featured</a>
+    </div>
+    
+    <div class="container">
+        <div id="shop-now" class="grid">
+            <div class="product" data-category="tshirts" onclick="showProductInfo(this)">
+                <img src="https://scontent.fmnl7-1.fna.fbcdn.net/v/t1.15752-9/462584005_558260633603270_4567475761892409012_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeEPJ_m3-_y0k996FASAAV61-AnVzZ5dTKr4CdXNnl1MqmMeA9rIeLmyQEtROoAbSPKQ5p5A8CiEBI_8NpmSpz0J&_nc_ohc=XU0NzKDrI7YQ7kNvgGyPKW_&_nc_zt=23&_nc_ht=scontent.fmnl7-1.fna&oh=03_Q7cD1QH0N8lHhK72okaTp7Bu_EEs0VLBLOl1z5EacGxuf1Vubg&oe=6767F2D3" alt="Product 1">
+                <h3>Orange Omsim T-Shirt</h3>
+                <p class="price">$20.00</p>
+                <div class="product-info">
+                    <p>The Dream On Orange OMSIM Apparel T-shirt combines vibrant style and inspiration with "OMS" and the Japanese phrase 夢を見る ("to dream") on the front. Featuring a bold 3D oval design and the phrase "DREAM ON" on the back, this comfortable and breathable shirt embodies ambition and modern flair.</p>
+                    <p><strong>Price: $20.00</strong></p>
+                    <button onclick="addToCart('Omsim Orange T-shirt', 19.99)" style="margin-top: 10px; padding: 10px 15px; background-color: #007f89; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                        Add to Cart
+                    </button>                </div>
+            </div>
+            <div class="product" data-category="tshirts" onclick="showProductInfo(this)">
+                <img src="https://scontent.fmnl7-2.fna.fbcdn.net/v/t1.15752-9/462581687_1184292523055703_913078700926200024_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeGU1KSe_SUvO3r--SEJAe2ZgeOdISAgHWWB450hICAdZVYpjD54twp6c0XOJm7tVzDjBysYoHHCyebW9Fo8W97K&_nc_ohc=j6GLYa9WcD4Q7kNvgHr30jr&_nc_zt=23&_nc_ht=scontent.fmnl7-2.fna&oh=03_Q7cD1QFczgRbv5_2QhsZnMcvtokhoqNkh-3wtwtww_BNp0ZVFA&oe=6767E2BA" alt="Product 1">
+                <h3>Black Omsim T-Shirt</h3>
+                <p class="price">$20.00</p>
+                <div class="product-info">
+                    <p>The black OMSIM Apparel T-shirt features a bold front logo and a vertical back design with OMSIM APPAREL and the Japanese phrase あなたのスタイルを作る ("Create Your Style"), promoting individuality and confidence. Crafted from comfortable, breathable fabric, it offers a sleek, modern look perfect for everyday wear.</p>
+                    <p><strong>Price: $20.00</strong></p>
+                    <button onclick="addToCart('Black Omsim T-shirt', 19.99)" style="margin-top: 10px; padding: 10px 15px; background-color: #007f89; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                        Add to Cart
+                    </button>                </div>
+            </div>
+            <div class="product" data-category="tshirts" onclick="showProductInfo(this)">
+                <img src="https://scontent.fmnl7-1.fna.fbcdn.net/v/t1.15752-9/462568528_1083138073539938_291112955079943929_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeFrKlgZwXzXFFuGFIRVFsQ-SqD01ZwXE2BKoPTVnBcTYN95r-T9kNgpRMxA4xsNJfHd2uYtgKSdz23iFV9Y-yZ_&_nc_ohc=9eYtKJ-_5VgQ7kNvgE9Lxaa&_nc_zt=23&_nc_ht=scontent.fmnl7-1.fna&oh=03_Q7cD1QFWYIlCLfSIzu9tN6f32xp0T5ZHUlhTzUgufo2X8GZJmw&oe=6767EFFE" alt="Product 1">
+                <h3>Omsim 8 T-Shirt</h3>
+                <p class="price">$20.00</p>
+                <div class="product-info">
+                    <p>The white OMSIM Apparel T-shirt features a bold front design with the "OMSIM APPAREL" logo framed by clean lines, complemented by a small circular accent. The back showcases a striking black-and-white 8-ball graphic with "OMSIM 8," blending modern minimalism with a sporty edge.</p>
+                    <p><strong>Price: $20.00</strong></p>
+                    <button onclick="addToCart('Omsim 8 T-shirt', 19.99)" style="margin-top: 10px; padding: 10px 15px; background-color: #007f89; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                        Add to Cart
+                    </button>                </div>
+            </div><div class="product" data-category="tshirts" onclick="showProductInfo(this)">
+                <img src="https://scontent.fmnl9-3.fna.fbcdn.net/v/t1.15752-9/462551927_421012901027523_2288598258801756674_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeH1H8yck1lCkOOINl3GHM6Wfg5Xru40OoN-Dleu7jQ6g6-3yWh0Z1gbt11YHH_lkyBX7A0o0CgKVzXfsK4Xhyeg&_nc_ohc=AFedFbF7HaUQ7kNvgHXwIQP&_nc_zt=23&_nc_ht=scontent.fmnl9-3.fna&oh=03_Q7cD1QEKqOykAZDSRnTTL3gPwFk_Q9A0jlrJR5v0_AGfY1MDNQ&oe=67692633" alt="Product 1">
+                <h3>Dandan White T-Shirt</h3>
+                <p class="price">$20.00</p>
+                <div class="product-info">
+                    <p>This T-shirt features a sleek OMSIM logo on the front, paired with a dynamic anime-inspired illustration of "Dandan" on the back. The bold, monochromatic design combines streetwear aesthetics with anime culture for a modern and edgy look.</p>
+                    <p><strong>Price: $20.00</strong></p>
+                    <button onclick="addToCart('Dandan White T-shirt', 19.99)" style="margin-top: 10px; padding: 10px 15px; background-color: #007f89; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                        Add to Cart
+                    </button>                </div>
+            </div><div class="product" data-category="tshirts" onclick="showProductInfo(this)">
+                <img src="https://scontent.fmnl9-4.fna.fbcdn.net/v/t1.15752-9/462586827_3846696045597668_8154459773929681556_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeFEzgYBlHf3_oupvtHT5Ss10G4J95XT3GPQbgn3ldPcY9wTIMz75vTlyEpt0RCLdM579d4tf7Qy8JJnUkCx6IGm&_nc_ohc=CNrBv6ZxNiAQ7kNvgE7Dmve&_nc_zt=23&_nc_ht=scontent.fmnl9-4.fna&oh=03_Q7cD1QEv2bCAYvRYWqZXBdsu7a5vtfxJPQXB0yOQwWa7Ew9fLg&oe=67694730" alt="Product 1">
+                <h3>Dandan Black T-Shirt</h3>
+                <p class="price">$20.00</p>
+                <div class="product-info">
+                    <p>This T-shirt features a sleek OMSIM logo on the front, paired with a dynamic anime-inspired illustration of "Dandan" on the back. The bold, monochromatic design combines streetwear aesthetics with anime culture for a modern and edgy look.</p>
+                    <p><strong>Price: $20.00</strong></p>
+                    <button onclick="addToCart('Dandan Black T-Shirt', 19.99)" style="margin-top: 10px; padding: 10px 15px; background-color: #007f89; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                        Add to Cart
+                    </button>                </div>
+            </div>
+            <div class="product" data-category="shorts" onclick="showProductInfo(this)">
+                <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462576243_2013759439059746_3267457356360440432_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=111&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeEvanVpxU-KXhCEO14da2R5TlFfj5Swt3JOUV-PlLC3cnhHk00KIfGEs09JowuvRn49_BBlDAU6E40qOcoUKPuj&_nc_ohc=IOlmaNjPY-QQ7kNvgFpKGVy&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QFyqGtYECgMgsjUgPTgacUMKz0WyEn3bdRgVgrAskfCbg&oe=6769716A" alt="Product 2">
+                <h3>Omsim Jorts</h3>
+                <p class="price">$15.00</p>
+                <div class="product-info">
+                    <p>The OMSIM apparel jorts are blue denim shorts with a loose fit and a wide-leg style. They feature the OMSIM logo on the back waistband, a black and white circular design on the left side, curved seams on the back of the legs, and detailed back pockets. Made from denim, these shorts are designed to sit above the knee.</p>
+                    <p><strong>Price: $15.00</strong></p>
+                    <button onclick="addToCart('Omsim Jorts', 19.99)" style="margin-top: 10px; padding: 10px 15px; background-color: #007f89; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                        Add to Cart
+                    </button>                </div>
+            </div>
+            <div class="product" data-category="shorts" onclick="showProductInfo(this)">
+                <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462543748_551145051008705_3092276332405214008_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=111&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeExfxWAUOIaR-Jrc29-5mZhjtvpkk_VNb6O2-mST9U1vt4Y6pAsQvIfEueNaKY5yjUK6qubqU7cvX4Iklj0ZbRO&_nc_ohc=xAbqRoIzJYUQ7kNvgG_y_HE&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QG_-_PMzVkvbIMtZzyoqm92rv_oFm4MxgPsGt4l68-pSw&oe=67695C99" alt="Product 2">
+                <h3>Omsim Jorts</h3>
+                <p class="price">$15.00</p>
+                <div class="product-info">
+                    <p>These OMSIM Apparel Jorts feature a loose fit and wide-leg design, showcasing the OMSIM logo on the back waistband, a black and white circular design on the left side, curved seams on the back legs, and functional back pockets. Designed to sit above the knee, they offer a stylish and relaxed look perfect for casual wear.</p>
+                    <p><strong>Price: $15.00</strong></p>
+                    <button onclick="addToCart('Omsim Jorts', 19.99)" style="margin-top: 10px; padding: 10px 15px; background-color: #007f89; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                        Add to Cart
+                    </button>                </div>
+            </div><div class="product" data-category="shorts" onclick="showProductInfo(this)">
+                <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462572881_1046377247171789_5145138824609169613_n.jpg?stp=dst-jpg_s526x395_tt6&_nc_cat=105&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeHeS0J67jpv94oR3wvTB_Q65D9wMEfTxBvkP3AwR9PEG0O7e7KQS7keFUIrCs1B4GW5NB4v_x-Ev2oy2CZKGxsU&_nc_ohc=urgiejKB-msQ7kNvgHbm2w6&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QHuezURJ7ntJGwIgzU1pfRFhIP59cY1l5dHaOWPG8-7JQ&oe=676940D5" alt="Product 2">
+                <h3>Omsim Black Shorts</h3>
+                <p class="price">$8.00</p>
+                <div class="product-info">
+                    <p>Classic and comfortable
+                        Material: High-quality, soft fabric
+                        Fit: Relaxed
+                        Features: Elastic waistband, side pockets, and a small "OMSIM" logo patch on the right leg
+                        Suitable for: Casual wear, lounging, or sports activities</p>
+                    <p><strong>Price: $8.00</strong></p>
+                    <button onclick="addToCart('Omsim Black Shorts', 19.99)" style="margin-top: 10px; padding: 10px 15px; background-color: #007f89; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                        Add to Cart
+                    </button>                </div>
+            </div>
+            <div class="product" data-category="pants" onclick="showProductInfo(this)">
+                <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462551880_1109714887393868_1463798145791026170_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeGH62pig5ftmRPoeyQL3epEwlZwHulFj7TCVnAe6UWPtKT1MBCLfLoZofUs7CW4_nLE7yz3TIqjYzyeX9kzHgeI&_nc_ohc=mpKmne6RGwEQ7kNvgEYsygu&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QEM4fOU9zOXJmhwNw7VapJaNk8qDBQMci-QhviG5qK_OQ&oe=6769CC02" alt="Product 3">
+                <h3>Omsim Corduroy Shorts</h3>
+                <p class="price">$12.00</p>
+                <div class="product-info">
+                    <p>Omsim Corduroy Shorts combine comfort, style, and functionality, featuring soft corduroy fabric, practical cargo pockets, a customizable drawstring waist, and classic design with Omsim branding, making them ideal for casual outings, errands, or relaxing, and available in various colors and sizes.</p>
+                    <p><strong>Price: $12.00</strong></p>
+                    <button onclick="addToCart('Omsim Corduroy Shorts', 19.99)" style="margin-top: 10px; padding: 10px 15px; background-color: #007f89; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                        Add to Cart
+                    </button>                </div>
+            </div>            <div class="product" data-category="pants" onclick="showProductInfo(this)">
+                <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462545745_429129523578479_2801346502887170580_n.png?stp=dst-png_s480x480&_nc_cat=110&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeHqj5uC0adwhxPz9BskXuiGdekEY8WCRph16QRjxYJGmON-1fU0P8nXDAaWo73E443o3-Tc71vYPmdm0N9X8G25&_nc_ohc=xdG5MSEUVksQ7kNvgFyhsAX&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QFzVMqSm6O9RzW2VVrB90O9R3w_gwjOULZl0mDA8Sjqqw&oe=6769ABD1" alt="Product 3">
+                <h3>Brown Corduroy Shorts</h3>
+                <p class="price">$10.00</p>
+                <div class="product-info">
+                    <p>Brown cargo shorts with an elastic waistband and brown belt, featuring six pockets (two large side, two smaller front, and two back), made from a durable cotton blend, ideal for casual wear, hiking, camping, or errands.</p>
+                    <p><strong>Price: $10.00</strong></p>
+                    <button onclick="addToCart('Brown Corduroy Shorts', 19.99)" style="margin-top: 10px; padding: 10px 15px; background-color: #007f89; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                        Add to Cart
+                    </button>                </div>
+            </div>
+            <div class="product" data-category="pants" onclick="showProductInfo(this)">
+                <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/467456146_595290483061363_2890786089953310766_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeG0o2IEQHD-h5rYqJpJW_7Op1e3i_2noRWnV7eL_aehFT-sotoMdWGC3cKsnrlqOCCn4b4Fe0Ly0JNwlE-ZogBd&_nc_ohc=IxmwhfRrEFYQ7kNvgHHBKcl&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QHQLVZ2SvoAbKWNa-D5srSjIGPpk38Xqgj-QO9GFGyNig&oe=6769B951" alt="Product 3">
+                <h3>Omsim Cargo Pants</h3>
+                <p class="price">$25.00</p>
+                <div class="product-info">
+                    <p>OMSIM Apparel's cargo pants combine durability and practicality with a clean, modern design. Featuring spacious pockets and a comfortable fit, they are perfect for everyday wear or outdoor adventures.</p>
+                    <p><strong>Price: $25.00</strong></p>
+                    <button onclick="addToCart('Omsim Cargo Pants', 19.99)" style="margin-top: 10px; padding: 10px 15px; background-color: #007f89; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                        Add to Cart
+                    </button>                </div>
+            </div><div class="product" data-category="pants" onclick="showProductInfo(this)">
+                <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/467458547_2362944864053713_2759026951778699508_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeErcv9Yow5satKKZh7bgF57fYf7Dz3_w5t9h_sPPf_Dmw8SNWGuuHwcJv0M7MVVZvlwFlBVq32rTVoJSLBZYr6r&_nc_ohc=mERTAYmksygQ7kNvgH15Oyi&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QG1Ea6Gke_VML1GBzc863czruttPKbBaQ5VaKEcHGxruQ&oe=6769CA91" alt="Product 3">
+                <h3>Omsim Wide Leg Pants</h3>
+                <p class="price">$24.00</p>
+                <div class="product-info">
+                    <p>OMSIM Apparel's wide-leg pants showcase a blend of sophistication and comfort, featuring a tailored fit with a stylish belt detail. Designed with premium fabric, these versatile pants are perfect for both formal occasions and modern casual wear.</p>
+                    <p><strong>Price: $24.00</strong></p>
+                    <button onclick="addToCart('Omsim Wide Leg Pants', 19.99)" style="margin-top: 10px; padding: 10px 15px; background-color: #007f89; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                        Add to Cart
+                    </button>                </div>
+            </div><div class="product" data-category="pants" onclick="showProductInfo(this)">
+                <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462574536_10845765229971   79_8796288561085004821_n.jpg?stp=dst-jpg_p480x480_tt6&_nc_cat=111&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeFC1ymbovOCf8Z7s5bNjVRnpkxEPBJiE-qmTEQ8EmIT6pmuhMcENgKRebCm7JSM8e_674c9FdlRjqQSIVXoCaVQ&_nc_ohc=fxzO_Zs-ZFYQ7kNvgEyPNWn&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QFT2kr1yATpSkMiVgUR0eDkECycdVgcqVL_g8X_vGaCVw&oe=6769D3C4" alt="Product 3">
+                <h3>Omsim Jeans</h3>
+                <p class="price">$20.00</p>
+                <div class="product-info">
+                    <p>OMSIM Apparel's jeans offer a timeless design with a modern twist, crafted from high-quality denim for durability and comfort. Featuring a sleek fit and versatile style, these jeans are perfect for casual wear or elevated everyday looks.</p>
+                    <p><strong>Price: $20.00</strong></p>
+                    <button onclick="addToCart('Omsim Jeans', 19.99)" style="margin-top: 10px; padding: 10px 15px; background-color: #007f89; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                        Add to Cart
+                    </button>                </div>
+            </div><div class="product" data-category="pants" onclick="showProductInfo(this)">
+                <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/467460246_1213051629767680_3222626000985679080_n.jpg?stp=dst-jpg_p480x480_tt6&_nc_cat=103&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeE0rqXDjmPV8ph00q9OHAJ4OFpIRP3uGFQ4WkhE_e4YVG7AdEByqtHOgw2lkWbuG0N1FsF9ndnSNWzM8IYgslJ5&_nc_ohc=FT8yZZxUHTcQ7kNvgGpbrVb&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QGZMQf5igY9P810RGcHoNMey69P7OQ2mPLaTKMmOaI52Q&oe=6769D216" alt="Product 3">
+                <h3>Omsim Slacks</h3>
+                <p class="price">$20.00</p>
+                <div class="product-info">
+                    <p>The OMSIM APPAREL slacks feature a sleek, minimalist design with a tailored fit, perfect for both casual and formal occasions. Made from high-quality fabric, these slacks combine comfort and durability, ensuring a polished and professional look.</p>
+                    <p><strong>Price: $20.00</strong></p>
+                    <button onclick="addToCart('Omsim Slacks', 19.99)" style="margin-top: 10px; padding: 10px 15px; background-color: #007f89; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                        Add to Cart
+                    </button>                </div>
+            </div><div class="product" data-category="pants" onclick="showProductInfo(this)">
+                <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/467456599_1087566143071848_2370108743168406467_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=108&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeGoZ3kllExd1C90TbncV9viY41ZZfUY5OJjjVll9Rjk4uH3cc4FwazTFfxDT-54d5onq1bZRR3tfGcFUYt9dMl3&_nc_ohc=iBPEBigmZpAQ7kNvgGWvL6d&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QEUbmlBAMKiI-QBU2nSkwZ_rFH1oL8AEk0YcAP-0t25xQ&oe=6769A70C" alt="Product 3">
+                <h3>Omsim Cargo Pants</h3>
+                <p class="price">$20.00</p>
+                <div class="product-info">
+                    <p>These OMSIM APPAREL cargo pants feature a rugged design with multiple utility pockets, offering both style and functionality. Crafted from durable fabric, they are ideal for outdoor activities or casual everyday wear.</p>
+                    <p><strong>Price: $20.00</strong></p>
+                    <button onclick="addToCart('Omsim Cargo Pants', 19.99)" style="margin-top: 10px; padding: 10px 15px; background-color: #007f89; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                        Add to Cart
+                    </button>                </div>
+            </div>  
+        </div>
+    </div>
+    
+    <section id="cart" class="container">
+        <h2>Your Cart</h2>
+        <div id="cart-container">
+            <p>Your cart is currently empty.</p>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 Omsim Apparel</p>
+        <div class="footer-socials">
+            <a href="https://www.facebook.com/profile.php?id=61568960289800" class="fab fa-facebook"></a>
+            <a href="https://x.com/OmsimApparel" class="fab fa-twitter"></a>
+            <a href="https://www.instagram.com/omsimapparel/" class="fab fa-instagram"></a>
+        </div>
+    </footer>
+    
+<script>
+    function scrollToHome() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    
+        function showCategory(category) {
+            const products = document.querySelectorAll('.product');
+            products.forEach(product => {
+                if (product.dataset.category === category) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+    
+        function searchProducts() {
+            const searchTerm = document.getElementById('search-bar').value.toLowerCase();
+            const products = document.querySelectorAll('.product');
+            products.forEach(product => {
+                const name = product.querySelector('h3').textContent.toLowerCase();
+                if (name.includes(searchTerm)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+    
+        function showProductInfo(product) {
+            const productInfo = product.querySelector('.product-info');
+            productInfo.style.display = 'block';
+        }
+    
+        function addToCart() {
+            alert('Added to cart');
+        }
+</script>
+    <script>
+// Add to Cart Functionality
+let cart = [];
+    
+    function addToCart(productName, price) {
+        cart.push({ name: productName, price: parseFloat(price) });
+        alert(`${productName} has been added to your cart.`);
+        updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+        const cartContainer = document.getElementById("cart-container");
+        if (cart.length === 0) {
+            cartContainer.innerHTML = "<p>Your cart is currently empty.</p>";
+            return;
+        }
+
+        let cartHTML = "<ul>";
+        let total = 0;
+        cart.forEach((item, index) => {
+            cartHTML += `<li>${item.name} - $${item.price.toFixed(2)}
+                            <button onclick="removeFromCart(${index})">Remove</button>
+                        </li>`;
+            total += item.price;
+        });
+        cartHTML += "</ul>";
+        cartHTML += `<p class="total">Total: $${total.toFixed(2)}</p>`;
+        cartHTML += `<button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>`;
+        cartContainer.innerHTML = cartHTML;
+    }
+
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCartDisplay();
+    }
+
+    function checkout() {
+        if (cart.length === 0) {
+            alert("Your cart is empty. Please add items to your cart before proceeding.");
+            return;
+        }
+
+        let total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+        let paymentMethod = prompt("Please select a payment method:\n1. Credit Card\n2. PayPal\n3. Cash on Delivery\n\nEnter the number corresponding to your choice:");
+
+        if (paymentMethod === "1") {
+            alert(`You have selected Credit Card. Your total is $${total}. Redirecting to payment gateway...`);
+        } else if (paymentMethod === "2") {
+            alert(`You have selected PayPal. Your total is $${total}. Redirecting to payment gateway...`);
+        } else if (paymentMethod === "3") {
+            alert(`You have selected Cash on Delivery. Your total is $${total}. Thank you for your order!`);
+        } else {
+            alert("Invalid selection. Please try again.");
+            return;
+        }
+
+        cart = []; // Clear the cart after checkout
+        updateCartDisplay();
+    }
+    </script>
+    <script>
+        function logout() {
+            alert("You have been logged out.");
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
